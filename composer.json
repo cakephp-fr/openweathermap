@@ -1,0 +1,29 @@
+{
+    "name": "cyberbobjr/Openweathermap",
+    "description": "Openweathermap plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "openweathermap",
+    ],
+    "homepage": "https://github.com/cyberbobjr/cakephp-Openweathermap",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Openweathermap\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Openweathermap\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
