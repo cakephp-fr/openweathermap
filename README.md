@@ -48,7 +48,7 @@ For this example, a $sites table contain every information about the city (name,
 ```
 public function main()
     {
-        // récupération de tous les sites
+        // parse all sites
         $sites = $this->Sites->find('all');
         foreach ($sites as $site) {
             $this->out('site : ' . $site->libelle);
@@ -57,15 +57,15 @@ public function main()
             } elseif ($site->has('latitude') || !$site->has('longitude')) {
                 $data = $this->Openweathermap->getWeatherByGeoloc($site->latitude, $site->longitude);
                 if ($data['success']) {
-                    $this->Sites->associateOpenweatherSite($site->id, $data['data']['city']['id']);
+                    $this->Sites->associateOpenweatherSite($site->id, $data['data']['city']['id']); // $data['data']['city']['id'] will contain the id from Openweathermap of the city 
                 }
             } else {
                 $data = $this->Openweathermap->getWeatherByCityName($site->ville, 'FR');
                 if ($data['success']) {
-                    $this->Sites->associateOpenweatherSite($site->id, $data['data']['city']['id']);
+                    $this->Sites->associateOpenweatherSite($site->id, $data['data']['city']['id']); // $data['data']['city']['id'] will contain the id from Openweathermap of the city 
                 }
             }
-            sleep(2);
+            sleep(2); // for unstress the server
         }
     }
 ```
