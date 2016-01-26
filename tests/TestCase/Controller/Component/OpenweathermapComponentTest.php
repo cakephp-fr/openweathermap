@@ -19,8 +19,10 @@ class OpenweathermapComponentTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $registry             = new ComponentRegistry();
-        $this->Openweathermap = new OpenweathermapComponent($registry, ['key' => '1ac998025e1b44ea56a8af2ee5e965dd']);
+        $registry = new ComponentRegistry();
+        $this->Openweathermap = new OpenweathermapComponent($registry, [
+            'key' => '1ac998025e1b44ea56a8af2ee5e965dd'
+        ]);
     }
 
     /**

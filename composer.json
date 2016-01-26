@@ -4,16 +4,17 @@
     "type": "cakephp-plugin",
     "keywords": [
         "cakephp",
-        "openweathermap",
+        "openweathermap"
     ],
     "homepage": "https://github.com/cyberbobjr/cakephp-Openweathermap",
     "license": "MIT",
     "require": {
         "php": ">=5.4.16",
-        "cakephp/cakephp": "~3.0"
+        "cakephp/cakephp": "~3.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "cakephp/cakephp-codesniffer": "2.*"
     },
     "autoload": {
         "psr-4": {
