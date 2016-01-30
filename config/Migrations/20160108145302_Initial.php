@@ -3,7 +3,7 @@ use Migrations\AbstractMigration;
 
 class Initial extends AbstractMigration
 {
-    public function up()
+    public function change()
     {
         $table = $this->table('weatherdatas');
         $table
@@ -147,12 +147,5 @@ class Initial extends AbstractMigration
                 'null' => false,
             ])
             ->create();
-
-    }
-
-    public function down()
-    {
-        $this->dropTable('weatherdatas');
-        $this->dropTable('weathersites');
     }
 }

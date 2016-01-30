@@ -1,12 +1,12 @@
 {
-    "name": "cyberbobjr/Openweathermap",
+    "name": "cakephp-fr/openweathermap",
     "description": "Openweathermap plugin for CakePHP",
     "type": "cakephp-plugin",
     "keywords": [
         "cakephp",
         "openweathermap"
     ],
-    "homepage": "https://github.com/cyberbobjr/cakephp-Openweathermap",
+    "homepage": "https://github.com/cakephp-fr/openweathermap",
     "license": "MIT",
     "require": {
         "php": ">=5.4.16",

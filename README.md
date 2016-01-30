@@ -6,32 +6,13 @@ You can install this plugin into your CakePHP application using [composer](http:
 
 The recommended way to install composer packages is:
 
-```
+```bash
 composer require cakephp-fr/openweathermap
-```
-
-## Installation (now)
-
-Put the plugin into the 'plugins' directory of your app.
-Check your composer.json and add this line :
-
-```
-"autoload": {
-    "psr-4": {
-        "Openweathermap\\": "./plugins/Openweathermap/src"
-    },
-},
-```
-
-Launch autodump :
-
-```
-composer composer.phar dumpautoload
 ```
 
 Create 2 tables : weatherdatas & weathersites with the help of initial migration file into 'Migrations' directory of the plugin (/Openweathermap/configs/Migrations)
 
-```
+```bash
 bin/cake migrations migrate -p Openweathermap
 ```
 
@@ -39,7 +20,7 @@ bin/cake migrations migrate -p Openweathermap
 
 Check that the plugin was loaded into the bootstrap.php :
 
-```
+```php
 Plugin::load('Openweathermap', [
     'bootstrap' => FALSE,
     'routes'    => FALSE
@@ -48,7 +29,7 @@ Plugin::load('Openweathermap', [
 
 Load the component into your AppController.php or any Controller you want :
 
-```
+```php
 $this->loadComponent('Openweathermap.Openweathermap', ['key' => YOURAPIKEY]);
 ```
 
@@ -64,7 +45,7 @@ getWeatherByGeoloc
 For example into a shell code :
 For this example, a $sites table contain every information about the city (name, long/lat or weathersite_id)
 
-```
+```php
 public function main()
 {
     // parse all sites
