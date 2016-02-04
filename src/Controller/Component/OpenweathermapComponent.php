@@ -195,7 +195,7 @@ class OpenweathermapComponent extends Component
      * @param array  $vars Array of vars for the url which will be called
      * @return mixed
      */
-    private function _buildParams($type, $vars)
+    protected function _buildParams($type, $vars)
     {
         $params['APPID'] = $this->_defaultConfig['key'];
 
@@ -235,12 +235,12 @@ class OpenweathermapComponent extends Component
      * @param string $type Type of request (forecast, current)
      * @return array|mixed
      */
-    private function _fetchData($params, $mode = null, $type = 'forecast')
+    protected function _fetchData($params, $mode = null, $type = 'forecast')
     {
         try {
             // if $mode is null, we get the default config mode
             if (is_null($mode)) {
-                $mode = $this->confg('mode');
+                $mode = $this->config('mode');
             }
             // create HTTP Client
             $client = new Client();
@@ -296,7 +296,7 @@ class OpenweathermapComponent extends Component
      * @param array $weatherdatas Array with weather datas in JSON format
      * @return bool true if success, false if error
      */
-    private function _saveData($weatherdatas)
+    protected function _saveData($weatherdatas)
     {
         $this->Weathersites = TableRegistry::get('Weathersites');
         $this->Weatherdatas = TableRegistry::get('Weatherdatas');
