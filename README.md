@@ -27,13 +27,25 @@ bin/cake migrations migrate -p Openweathermap
 
 ## Configuration
 
-Load the component into your AppController.php or any Controller you want:
+To configure the plugin you can add the openweathermap config to the config/app.php, something like:
 
 ```php
-$this->loadComponent('Openweathermap.Openweathermap', ['key' => YOURAPIKEY]);
+return [
+
+    .... (other configs before)
+
+    'Openweathermap' => [
+        // MANDATORY : Register API keys at openweathermap.org
+        'key' => 'your-sitekey',
+        // OPTIONAL : default lang for the plugin. Default to 'fr' if this config is not provided
+        'lang' => 'en',
+        // OPTIONAL : default units mesure for the plugin. Default to 'metric' if this config is not provided
+        'units' => 'metric'
+    ]
+]
 ```
 
-The API Key is mandatory, if you want an API go to the openweathermap.org and follow instructions.
+Make sure that /config/app.php file is in .gitignore. The secret key must stay secret. The API Key is mandatory, if you want an API go to the openweathermap.org and follow instructions.
 
 ## Using
 

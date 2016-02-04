@@ -20,9 +20,7 @@ class OpenweathermapComponentTest extends TestCase
     {
         parent::setUp();
         $registry = new ComponentRegistry();
-        $this->Openweathermap = new OpenweathermapComponent($registry, [
-            'key' => '78382hFkd09ADQKFS8FYF8Y8FY'
-        ]);
+        $this->Openweathermap = new OpenweathermapComponent($registry);
     }
 
     /**
@@ -42,7 +40,7 @@ class OpenweathermapComponentTest extends TestCase
      *
      * @return void
      */
-    public function testInitialization()
+    public function testStartup()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
