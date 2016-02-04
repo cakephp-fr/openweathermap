@@ -1,10 +1,11 @@
 # Openweathermap plugin for CakePHP v3
+[![Build Status](https://secure.travis-ci.org/cakephp-fr/openweathermap.svg?branch=master)](http://travis-ci.org/cakephp/localized)
+[![License](https://poser.pugx.org/cakephp-fr/openweathermap/license.svg)](https://packagist.org/packages/cakephp-fr/openweathermap)
+[![Total Downloads](https://poser.pugx.org/cakephp-fr/openweathermap/d/total.svg)](https://packagist.org/packages/cakephp-fr/openweathermap)
 
-## Installation (in progress)
+## Installation
 
-You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
-
-The recommended way to install composer packages is:
+You can install this plugin into your CakePHP application using [composer](http://getcomposer.org). The recommended way to install composer packages is:
 
 ```bash
 composer require cakephp-fr/openweathermap:dev-master
@@ -16,7 +17,7 @@ Load your plugin using:
 bin/cake plugin load Openweathermap
 ```
 
-or by manually putting `CakePlugin::load('Localized')` in your `boostrap.php`.
+or add manually `CakePlugin::load('Localized')` in your `boostrap.php`.
 
 Create 2 tables : weatherdatas & weathersites with the help of initial migration file into 'Migrations' directory of the plugin (/Openweathermap/configs/Migrations)
 
