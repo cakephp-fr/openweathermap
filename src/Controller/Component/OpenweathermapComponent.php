@@ -86,18 +86,29 @@ class OpenweathermapComponent extends Component
     ];
 
     /**
-     * Initialisation of the component
+     * startup callback
      *
-     * @param array $config Array of configuration
+     * @param \Cake\Event\Event $event Event.
      * @throws Exception If API Key is not provided
      * @return void
      */
-    public function initialize(array $config)
+    public function startup(Event $event)
     {
-        if (isset($config['key'])) {
-            $this->_defaultConfig['key'] = $config['key'];
+        $key = Configure::consume('Openweathermap.key');
+        if (isset($key) && !empty($key)) {
+            $this->config('key', $key);
         } else {
-            throw new Exception(__d('openweathermap', 'API Key must be provided'));
+            throw new \Exception(__d('openweathermap', 'API Key must be provided'));
+        }
+
+        $lang = Configure::consume('Openweathermap.lang');
+        if (isset($lang) && !empty($lang)) {
+            $this->config('lang', $lang);
+        }
+
+        $units = Configure::consume('Openweathermap.units');
+        if (isset($units) && !empty($units)) {
+            $this->config('units', $units);
         }
     }
 
@@ -197,18 +208,19 @@ class OpenweathermapComponent extends Component
      */
     protected function _buildParams($type, $vars)
     {
-        $params['APPID'] = $this->_defaultConfig['key'];
+        $params['APPID'] = $this->config('key');
+        $this->config('key', '');
 
         // Units parameter (C° of F°)
         if (is_null($vars['units'])) {
-            $params['units'] = $this->_defaultConfig['units'];
+            $params['units'] = $this->config('units');
         } else {
             $params['units'] = $vars['units'];
         }
 
         // Language parameter
         if (is_null($vars['lang'])) {
-            $params['lang'] = $this->_defaultConfig['lang'];
+            $params['lang'] = $this->config('lang');
         }
 
         // made custom query switch from the request type (geoloc, cityId, cityName)
@@ -246,7 +258,7 @@ class OpenweathermapComponent extends Component
             $client = new Client();
             $params['mode'] = $mode;
             // grab the info
-            $data = $client->get($this->_defaultConfig['url'][$type], $params);
+            $data = $client->get($this->config('url.' . $type), $params);
 
             if (!$data->isOk()) {
                 // if the grabing is a failure, we return an error
